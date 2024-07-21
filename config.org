@@ -10,7 +10,19 @@
   (scroll-bar-mode -1)
   (global-display-line-numbers-mode 1)
   ;(load-theme 'modus-vivendi t)
+  (setq inhibit-startup-screen t)
   (set-frame-font "-JB-JetBrainsMono Nerd Font Mono-regular-normal-normal-*-*-*-*-*-m-0-iso10646-1" nil t)
+#+end_src
+
+** Auto-save
+#+begin_src elisp
+  (setq backup-directory-alist '(("." . "~/.config/emacs/auto-save-list")))
+#+end_src
+
+** Ido-mode
+#+begin_src elisp
+  (require 'ido)
+  (ido-mode 1)
 #+end_src
 
 ** Org-mode
@@ -54,8 +66,15 @@
 ** Company
 #+begin_src elisp
   (use-package company
+    :ensure t)
+#+end_src
+
+** Smex
+#+begin_src elisp
+  (use-package smex
     :ensure t
-    :init (add-hook 'after-prog-hook #'company-mode 1))
+    :config
+    (global-set-key (kbd "M-x") 'smex))
 #+end_src
 
 ** Evil
@@ -88,8 +107,8 @@
 ** Org-bullets
 #+begin_src elisp
   (use-package org-bullets
-  :ensure t
-  :init (org-bullets-mode 1))
+    :ensure t
+    :init (org-bullets-mode 1))
 #+end_src
 
 ** DOOM Themes
@@ -103,4 +122,6 @@
 #+begin_src elisp
   (keymap-global-set "C-<tab> g" 'magit)
   (keymap-global-set "C-<tab> s" 'eshell)
+  (keymap-global-set "C-<tab> c" 'company-mode)
+  (keymap-global-set "C-x C-b" 'ibuffer)
 #+end_src

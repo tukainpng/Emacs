@@ -3,7 +3,13 @@
 (scroll-bar-mode -1)
 (global-display-line-numbers-mode 1)
 ;(load-theme 'modus-vivendi t)
+(setq inhibit-startup-screen t)
 (set-frame-font "-JB-JetBrainsMono Nerd Font Mono-regular-normal-normal-*-*-*-*-*-m-0-iso10646-1" nil t)
+
+(setq backup-directory-alist '(("." . "~/.config/emacs/auto-save-list")))
+
+(require 'ido)
+(ido-mode 1)
 
 (require 'org-tempo)
 (setq org-support-shift-select 1)
@@ -30,8 +36,12 @@
   :init (which-key-mode 1))
 
 (use-package company
+  :ensure t)
+
+(use-package smex
   :ensure t
-  :init (add-hook 'after-prog-hook #'company-mode 1))
+  :config
+  (global-set-key (kbd "M-x") 'smex))
 
 (use-package evil
   :ensure t
@@ -49,19 +59,14 @@
   :init (highlight-parentheses-mode 1))
 
 (use-package org-bullets
-:ensure t
-:init (org-bullets-mode 1))
+  :ensure t
+  :init (org-bullets-mode 1))
 
 (use-package doom-themes
   :ensure t
   :init (load-theme 'doom-one t))
 
-(use-package general
-:ensure t
-:init (require 'general))
-
-(defconst leader-key (kbd "\\"))
-(general-create-definer leader-key-def
-  :prefix leader-key)
-(leader-key-def
- "g" 'magit)
+(keymap-global-set "C-<tab> g" 'magit)
+(keymap-global-set "C-<tab> s" 'eshell)
+(keymap-global-set "C-<tab> c" 'company-mode)
+(keymap-global-set "C-x C-b" 'ibuffer)

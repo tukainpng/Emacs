@@ -2,6 +2,9 @@ elpa
 tree-sitter
 config.org~
 init.el~
+ido*
+url
 auto-save-list
 transient
 eshell/history
+eshell/lastdir
