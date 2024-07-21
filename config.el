@@ -31,7 +31,7 @@
 
 (use-package company
   :ensure t
-  :init (company-mode 1))
+  :init (add-hook 'after-prog-hook #'company-mode 1))
 
 (use-package evil
   :ensure t
@@ -55,3 +55,13 @@
 (use-package doom-themes
   :ensure t
   :init (load-theme 'doom-one t))
+
+(use-package general
+:ensure t
+:init (require 'general))
+
+(defconst leader-key (kbd "\\"))
+(general-create-definer leader-key-def
+  :prefix leader-key)
+(leader-key-def
+ "g" 'magit)

@@ -55,7 +55,7 @@
 #+begin_src elisp
   (use-package company
     :ensure t
-    :init (company-mode 1))
+    :init (add-hook 'after-prog-hook #'company-mode 1))
 #+end_src
 
 ** Evil
@@ -97,4 +97,10 @@
   (use-package doom-themes
     :ensure t
     :init (load-theme 'doom-one t))
+#+end_src
+
+* Teclas de atalho
+#+begin_src elisp
+  (keymap-global-set "C-<tab> g" 'magit)
+  (keymap-global-set "C-<tab> s" 'eshell)
 #+end_src

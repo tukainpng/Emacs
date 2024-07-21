@@ -4,3 +4,4 @@ config.org~
 init.el~
 auto-save-list
 transient
+eshell/history
