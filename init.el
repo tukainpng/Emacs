@@ -20,6 +20,7 @@
 (global-prettify-symbols-mode	 t)
 (global-hl-line-mode		 t)
 (global-completion-preview-mode	 t)
+(fido-vertical-mode              t)
 
 ;; UTF-8 by default
 (prefer-coding-system 'utf-8)
